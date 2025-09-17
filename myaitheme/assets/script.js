@@ -1,1 +1,1 @@
-// JS pour le thème
+// Custom JS
