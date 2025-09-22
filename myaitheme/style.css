@@ -3,10 +3,11 @@ Theme Name: My Ai Theme
 Theme URI: https://example.com/
 Author: Your Name
 Author URI: https://example.com/
-Description: Thème WordPress de base compatible avec Gutenberg (FSE).
+Description: A custom WordPress Block Theme with full site editing and WooCommerce support.
 Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: my-ai-theme
-Tags: blog, block-theme, full-site-editing
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+Tags: full-site-editing, block-theme, accessibility-ready
+Text Domain: myaitheme
 */
