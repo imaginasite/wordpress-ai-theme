@@ -1,13 +1,142 @@
-/*
-Theme Name: My Ai Theme
-Theme URI: https://example.com/
-Author: Your Name
-Author URI: https://example.com/
-Description: A custom WordPress Block Theme with full site editing and WooCommerce support.
-Version: 1.0
-Requires at least: 6.0
-Tested up to: 6.5
-Requires PHP: 7.4
-Tags: full-site-editing, block-theme, accessibility-ready
-Text Domain: myaitheme
-*/
+/* Enhanced List Styles */
+.wp-block-list.is-style-checkmark {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wp-block-list.is-style-checkmark li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.wp-block-list.is-style-checkmark li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--wp--preset--color--success-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.wp-block-list.is-style-arrow {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wp-block-list.is-style-arrow li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.wp-block-list.is-style-arrow li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--wp--preset--color--black);
+    font-weight: bold;
+}
+
+.wp-block-list.is-style-plus {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wp-block-list.is-style-plus li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.wp-block-list.is-style-plus li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: var(--wp--preset--color--black);
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.wp-block-list.is-style-numbered {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: numbered-list;
+}
+
+.wp-block-list.is-style-numbered li {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+    counter-increment: numbered-list;
+}
+
+.wp-block-list.is-style-numbered li::before {
+    content: counter(numbered-list);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--wp--preset--color--black);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.wp-block-list.is-style-no-bullets {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wp-block-list.is-style-no-bullets li {
+    margin-bottom: 0.5rem;
+}
+
+/* Nested list support */
+.wp-block-list.is-style-checkmark ul,
+.wp-block-list.is-style-arrow ul,
+.wp-block-list.is-style-plus ul,
+.wp-block-list.is-style-numbered ul,
+.wp-block-list.is-style-no-bullets ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.wp-block-list.is-style-checkmark ul li::before,
+.wp-block-list.is-style-arrow ul li::before,
+.wp-block-list.is-style-plus ul li::before,
+.wp-block-list.is-style-numbered ul li::before {
+    content: none;
+}
+
+/* Ordered list variations */
+.wp-block-list.is-style-checkmark ol,
+.wp-block-list.is-style-arrow ol,
+.wp-block-list.is-style-plus ol,
+.wp-block-list.is-style-numbered ol,
+.wp-block-list.is-style-no-bullets ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+}
+
+/* Editor styles for better preview */
+.editor-styles-wrapper .wp-block-list.is-style-checkmark li::before,
+.editor-styles-wrapper .wp-block-list.is-style-arrow li::before,
+.editor-styles-wrapper .wp-block-list.is-style-plus li::before,
+.editor-styles-wrapper .wp-block-list.is-style-numbered li::before {
+    content: inherit;
+}

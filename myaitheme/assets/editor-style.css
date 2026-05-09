@@ -1,1 +1,35 @@
-/* Custom styles for Gutenberg editor */
+/* Editor Styles for My Ai Theme */
+.wp-block {
+    max-width: 100%;
+}
+
+.wp-block[data-align="wide"] {
+    max-width: 1140px;
+}
+
+.wp-block[data-align="full"] {
+    max-width: none;
+}
+
+/* Improve editor readability */
+.editor-styles-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+}
+
+/* Style guide in editor */
+.editor-styles-wrapper .has-white-color { color: #ffffff; }
+.editor-styles-wrapper .has-black-color { color: #333333; }
+.editor-styles-wrapper .has-dark-gray-color { color: #666666; }
+.editor-styles-wrapper .has-gray-color { color: #888888; }
+.editor-styles-wrapper .has-light-gray-color { color: #d3d3d3; }
+.editor-styles-wrapper .has-very-light-gray-color { color: #f4f4f4; }
+.editor-styles-wrapper .has-transparent-color { color: transparent; }
+
+.editor-styles-wrapper .has-white-background-color { background-color: #ffffff; }
+.editor-styles-wrapper .has-black-background-color { background-color: #333333; }
+.editor-styles-wrapper .has-dark-gray-background-color { background-color: #666666; }
+.editor-styles-wrapper .has-gray-background-color { background-color: #888888; }
+.editor-styles-wrapper .has-light-gray-background-color { background-color: #d3d3d3; }
+.editor-styles-wrapper .has-very-light-gray-background-color { background-color: #f4f4f4; }
+.editor-styles-wrapper .has-transparent-background-color { background-color: transparent; }
