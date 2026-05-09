@@ -5,7 +5,7 @@ Here is the prompt used to generate the theme (edit 05/2026)
 
 _____
 
-
+```
 Generate a production-ready WordPress Block Theme fully compatible with Full Site Editing (FSE), named “My Ai Theme”, using the folder name myaitheme.
 
 The theme must be modern, clean, responsive, accessible, optimized for Gutenberg, and compatible with WordPress 6.9+ and WooCommerce.
@@ -582,7 +582,7 @@ The final generated theme must:
 - follow WordPress standards
 - be production-ready
 - work immediately after activation without errors
-
+```
 __________________________________
 
 This is a starter theme with woocommerce support 
