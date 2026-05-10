@@ -64,16 +64,33 @@ function myaitheme_register_block_styles() {
     }
 
     $list_styles = array(
-        'checkmark'  => __( 'Checkmark', 'myaitheme' ),
-        'arrow'      => __( 'Arrow', 'myaitheme' ),
-        'plus'       => __( 'Plus', 'myaitheme' ),
-        'numbered'   => __( 'Numbered Circle', 'myaitheme' ),
-        'no-bullets' => __( 'No Bullets', 'myaitheme' ),
+        'checkmark'  => array(
+            'label' => __( 'Checkmark', 'myaitheme' ),
+            'inline_style' => 'ul.is-style-checkmark{list-style:none;padding-left:0}ul.is-style-checkmark li{position:relative;padding-left:2rem;margin-bottom:.5rem}ul.is-style-checkmark li::before{content:"\2713";position:absolute;left:0;top:0;width:1.5rem;height:1.5rem;background-color:#28a745;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:bold}'
+        ),
+        'arrow'      => array(
+            'label' => __( 'Arrow', 'myaitheme' ),
+            'inline_style' => 'ul.is-style-arrow{list-style:none;padding-left:0}ul.is-style-arrow li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}ul.is-style-arrow li::before{content:"\2192";position:absolute;left:0;color:var(--wp--preset--color--black);font-weight:bold}'
+        ),
+        'plus'       => array(
+            'label' => __( 'Plus', 'myaitheme' ),
+            'inline_style' => 'ul.is-style-plus{list-style:none;padding-left:0}ul.is-style-plus li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}ul.is-style-plus li::before{content:"\002B";position:absolute;left:0;color:var(--wp--preset--color--black);font-weight:bold;font-size:1.125rem}'
+        ),
+        'numbered'   => array(
+            'label' => __( 'Numbered Circle', 'myaitheme' ),
+            'inline_style' => 'ul.is-style-numbered{list-style:none;padding-left:0;counter-reset:numbered-list}ul.is-style-numbered li{position:relative;padding-left:3rem;margin-bottom:1rem;counter-increment:numbered-list}ul.is-style-numbered li::before{content:counter(numbered-list);position:absolute;left:0;top:0;width:2rem;height:2rem;background-color:var(--wp--preset--color--black);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:bold}'
+        ),
+        'no-bullets' => array(
+            'label' => __( 'No Bullets', 'myaitheme' ),
+            'inline_style' => 'ul.is-style-no-bullets{list-style:none;padding-left:0}'
+        ),
     );
-    foreach ( $list_styles as $name => $label ) {
+
+    foreach ( $list_styles as $name => $style_args ) {
         register_block_style( 'core/list', array(
-            'name'  => $name,
-            'label' => $label,
+            'name'         => $name,
+            'label'        => $style_args['label'],
+            'inline_style' => $style_args['inline_style'],
         ) );
     }
 }
