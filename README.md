@@ -1,5 +1,5 @@
 # wordpress-ai-theme
-Basic theme for WordPress made with Chat GPT.
+Basic theme for WordPress made with Chat GPT & Gemini.
 
 Here is the prompt used to generate the theme (edit 05/2026)
 
