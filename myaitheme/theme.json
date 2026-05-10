@@ -1,5 +1,17 @@
 {
-    "version": 2,
+    "version": 3,
+    "templateParts": [
+        {
+            "area": "header",
+            "name": "header",
+            "title": "Header"
+        },
+        {
+            "area": "footer",
+            "name": "footer",
+            "title": "Footer"
+        }
+    ],
     "settings": {
         "appearanceTools": true,
         "useRootPaddingAwareAlignments": true,
@@ -31,42 +43,52 @@
         {
           "name": "Small",
           "slug": "small",
-          "size": "0.875rem"
+          "size": "0.875rem",
+          "fluid": false
         },
         {
           "name": "Medium",
           "slug": "medium",
-          "size": "1.125rem",
+          "size": "1rem",
           "fluid": {
             "min": "1rem",
-            "max": "1.25rem"
+            "max": "1.125rem"
           }
         },
         {
           "name": "Large",
           "slug": "large",
-          "size": "1.375rem",
+          "size": "1.5rem",
           "fluid": {
-            "min": "1.125rem",
+            "min": "1.25rem",
             "max": "1.5rem"
           }
         },
         {
-          "name": "XL",
+          "name": "X-Large",
           "slug": "x-large",
-          "size": "2rem",
+          "size": "2.25rem",
           "fluid": {
             "min": "1.75rem",
-            "max": "2.2rem"
+            "max": "2.25rem"
           }
         },
         {
-          "name": "XXL",
+          "name": "XX-Large",
           "slug": "xx-large",
-          "size": "2.8rem",
+          "size": "3.5rem",
           "fluid": {
             "min": "2.5rem",
-            "max": "3rem"
+            "max": "3.5rem"
+          }
+        },
+        {
+          "name": "Display",
+          "slug": "display",
+          "size": "5rem",
+          "fluid": {
+            "min": "3rem",
+            "max": "5rem"
           }
         }
       ],
@@ -120,87 +142,46 @@
             "margin": true,
             "spacingSizes": [
                 {
-                    "name": "Tiny",
-                    "size": "0.5rem",
+                    "name": "10 - Tiny",
+                    "size": "0.25rem",
                     "slug": "10"
                 },
                 {
-                    "name": "Small",
-                    "size": "1rem",
+                    "name": "20 - Small",
+                    "size": "0.5rem",
                     "slug": "20"
                 },
                 {
-                    "name": "Medium",
-                    "size": "1.5rem",
+                    "name": "30 - Base",
+                    "size": "1rem",
                     "slug": "30"
                 },
                 {
-                    "name": "Large",
-                    "size": "2rem",
+                    "name": "40 - Medium",
+                    "size": "1.5rem",
                     "slug": "40"
                 },
                 {
-                    "name": "X-Large",
-                    "size": "3rem",
+                    "name": "50 - Large",
+                    "size": "2rem",
                     "slug": "50"
+                },
+                {
+                    "name": "60 - X-Large",
+                    "size": "3rem",
+                    "slug": "60"
+                },
+                {
+                    "name": "70 - XX-Large",
+                    "size": "4rem",
+                    "slug": "70"
+                },
+                {
+                    "name": "80 - Section",
+                    "size": "6rem",
+                    "slug": "80"
                 }
             ]
-        },
-        "blocks": {
-            "core/button": {
-                "variations": {
-                    "styles": [
-                        {
-                            "name": "fill",
-                            "label": "Fill",
-                            "isDefault": true
-                        },
-                        {
-                            "name": "outline",
-                            "label": "Outline"
-                        },
-                        {
-                            "name": "ghost",
-                            "label": "Ghost"
-                        },
-                        {
-                            "name": "pill",
-                            "label": "Pill"
-                        }
-                    ]
-                }
-            },
-            "core/list": {
-                "variations": {
-                    "styles": [
-                        {
-                            "name": "default",
-                            "label": "Default",
-                            "isDefault": true
-                        },
-                        {
-                            "name": "checkmark",
-                            "label": "Checkmark"
-                        },
-                        {
-                            "name": "arrow",
-                            "label": "Arrow"
-                        },
-                        {
-                            "name": "plus",
-                            "label": "Plus"
-                        },
-                        {
-                            "name": "numbered",
-                            "label": "Numbered Circle"
-                        },
-                        {
-                            "name": "no-bullets",
-                            "label": "No Bullets"
-                        }
-                    ]
-                }
-            }
         }
     },
     "styles": {

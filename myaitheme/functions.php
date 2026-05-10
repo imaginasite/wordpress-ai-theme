@@ -39,16 +39,6 @@ function myaitheme_enqueue_assets() {
     );
 }
 
-// Enqueue editor styles
-add_action( 'enqueue_block_editor_assets', 'myaitheme_enqueue_editor_assets' );
-function myaitheme_enqueue_editor_assets() {
-    wp_enqueue_style( 
-        'myaitheme-editor-style', 
-        get_template_directory_uri() . '/assets/editor-style.css', 
-        array(), 
-        wp_get_theme()->get( 'Version' ) 
-    );
-}
 
 // Register block patterns
 function myaitheme_register_block_patterns() {
@@ -57,3 +47,34 @@ function myaitheme_register_block_patterns() {
     ) );
 }
 add_action( 'init', 'myaitheme_register_block_patterns' );
+
+// Register block styles to prevent block recovery errors
+function myaitheme_register_block_styles() {
+    $button_styles = array(
+        'fill'    => __( 'Fill', 'myaitheme' ),
+        'outline' => __( 'Outline', 'myaitheme' ),
+        'ghost'   => __( 'Ghost', 'myaitheme' ),
+        'pill'    => __( 'Pill', 'myaitheme' ),
+    );
+    foreach ( $button_styles as $name => $label ) {
+        register_block_style( 'core/button', array(
+            'name'  => $name,
+            'label' => $label,
+        ) );
+    }
+
+    $list_styles = array(
+        'checkmark'  => __( 'Checkmark', 'myaitheme' ),
+        'arrow'      => __( 'Arrow', 'myaitheme' ),
+        'plus'       => __( 'Plus', 'myaitheme' ),
+        'numbered'   => __( 'Numbered Circle', 'myaitheme' ),
+        'no-bullets' => __( 'No Bullets', 'myaitheme' ),
+    );
+    foreach ( $list_styles as $name => $label ) {
+        register_block_style( 'core/list', array(
+            'name'  => $name,
+            'label' => $label,
+        ) );
+    }
+}
+add_action( 'init', 'myaitheme_register_block_styles' );
