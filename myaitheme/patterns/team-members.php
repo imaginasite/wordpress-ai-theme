@@ -39,7 +39,7 @@
                 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
                 <!-- wp:social-link {"url":"#","service":"instagram"} /-->
             </ul>
-            <!-- /wp:social-lokens -->
+            <!-- /wp:social-links -->
         </div>
         <!-- /wp:column -->
         
@@ -63,7 +63,7 @@
                 <!-- wp:social-link {"url":"#","service":"linkedin"} /-->
                 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
             </ul>
-            <!-- /wp:social-lokens -->
+            <!-- /wp:social-links -->
         </div>
         <!-- /wp:column -->
         
@@ -86,7 +86,7 @@
                 <!-- wp:social-link {"url":"#","service":"linkedin"} /-->
                 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
             </ul>
-            <!-- /wp:social-lokens -->
+            <!-- /wp:social-links -->
         </div>
         <!-- /wp:column -->
     </div>

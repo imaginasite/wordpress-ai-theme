@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 2,
     "templateParts": [
         {
             "area": "header",
@@ -43,8 +43,7 @@
         {
           "name": "Small",
           "slug": "small",
-          "size": "0.875rem",
-          "fluid": false
+          "size": "0.875rem"
         },
         {
           "name": "Medium",
