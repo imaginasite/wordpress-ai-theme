@@ -1,24 +1,114 @@
 # wordpress-ai-theme
-Basic theme for WordPress made with Chat GPT & Gemini.
+Basic theme for WordPress made with Chat GPT & Gemini
 
-Here is the prompt used to generate the theme (edit 05/2026)
+Here is the prompt used to generate the theme (edit 13/05/2026)
+
+Feel free to edit it, ask modification to any ai, and test the result
+
+IMPORTANT NOTICE : Due to complexity of the prompt, use it step by step (use "continue" after each step) to avoid errors and bad output
 
 _____
 
-```
-Generate a production-ready WordPress Block Theme fully compatible with Full Site Editing (FSE), named “My Ai Theme”, using the folder name myaitheme.
+``` # My Ai Theme — Enterprise WordPress FSE Theme Generation Prompt
 
-The theme must be modern, clean, responsive, accessible, optimized for Gutenberg, and compatible with WordPress 6.9+ and WooCommerce.
+# ROLE
 
-The final output must contain all files ready to be installed directly inside:
+You are an Expert WordPress Developer specialized in:
+- Full Site Editing (FSE)
+- Gutenberg Block Themes
+- WordPress 6.9+
+- WooCommerce
+- theme.json Version 3 architecture
+- Accessibility (WCAG)
+- Performance optimization
+- Production-ready WordPress engineering
+
+Your task is to generate a complete production-ready WordPress Block Theme named:
+
+- Theme Name: My Ai Theme
+- Folder Name: myaitheme
+
+The theme MUST be fully installable directly inside:
 
 /wp-content/themes/myaitheme
 
-If possible, also generate a valid ZIP archive of the full theme.
+Generate ALL required files with valid syntax and production-quality code.
 
-==================================================
-REQUIRED FILE STRUCTURE
-==================================================
+If possible, also generate a valid installable ZIP archive:
+myaitheme.zip
+
+The final theme MUST be:
+- modern
+- minimalist
+- SaaS-style
+- responsive
+- accessible
+- lightweight
+- Gutenberg-native
+- WooCommerce compatible
+- entirely free of Block Recovery errors
+
+---
+
+# CRITICAL REQUIREMENTS (ANTI-BLOCK-RECOVERY)
+
+IMPORTANT:
+The generated theme MUST NOT produce ANY:
+- Block Recovery errors
+- Invalid block warnings
+- Template parsing errors
+- Unsupported block warnings
+
+STRICT RULES:
+
+1. Use ONLY officially supported WordPress core blocks.
+
+NEVER use:
+- core/main
+- core/container
+- core/section
+- experimental blocks
+- plugin-dependent blocks
+- custom blocks unless explicitly registered
+
+2. Every block comment MUST contain valid JSON.
+
+3. Opening and closing blocks MUST perfectly match.
+
+4. Every block attribute MUST generate the correct WordPress CSS classes.
+
+Example:
+
+backgroundColor:"black"
+
+MUST generate:
+class="has-black-background-color"
+
+5. Avoid arbitrary raw HTML whenever possible.
+
+Prefer native WordPress blocks.
+
+6. Validate all generated templates against Gutenberg parser rules.
+
+Ensure:
+- valid block nesting
+- no orphaned blocks
+- no malformed comments
+- no unsupported attributes
+- valid HTML5 structure
+- semantic markup
+
+7. All templates MUST begin with:
+
+<!-- wp:template-part {"slug":"header","theme":"myaitheme","tagName":"header"} /-->
+
+And MUST end with:
+
+<!-- wp:template-part {"slug":"footer","theme":"myaitheme","tagName":"footer"} /-->
+
+---
+
+# REQUIRED FILE STRUCTURE
 
 myaitheme/
 │
@@ -50,8 +140,14 @@ myaitheme/
 │   └── footer.html
 │
 ├── patterns/
-│   ├── hero.php
-│   ├── features.php
+│   ├── hero-section.php
+│   ├── benefits-section.php
+│   ├── features-grid.php
+│   ├── testimonials.php
+│   ├── pricing-table.php
+│   ├── team-members.php
+│   ├── faq.php
+│   ├── newsletter.php
 │   ├── call-to-action.php
 │   └── latest-posts.php
 │
@@ -59,12 +155,13 @@ myaitheme/
     ├── light.json
     └── dark.json
 
-==================================================
-STYLE.CSS
-==================================================
+---
 
-Create a fully valid WordPress theme header:
+# STYLE.CSS REQUIREMENTS
 
+Create a fully valid WordPress theme header.
+
+Required fields:
 - Theme Name: My Ai Theme
 - Theme URI
 - Author
@@ -79,20 +176,22 @@ Create a fully valid WordPress theme header:
 - License URI
 - Tags
 
-Also include minimal base styles for:
+Include minimal production-ready CSS for:
 - body
 - headings
+- paragraphs
 - links
 - buttons
 - forms
 - images
+- WooCommerce consistency
 - accessibility focus states
 
-The stylesheet must:
-- be responsive
-- follow modern CSS practices
-- avoid unnecessary code
-- support WooCommerce styling consistency
+Must include:
+- responsive styles
+- mobile-first design
+- lightweight CSS
+- no unnecessary code
 
 Include fallback CSS for:
 - input:focus
@@ -103,138 +202,15 @@ Include fallback CSS for:
 - search block input
 - comment form fields
 
-==================================================
-TEMPLATE REQUIREMENTS
-==================================================
+---
 
-All templates inside /templates/ must contain valid WordPress block markup.
+# FUNCTIONS.PHP REQUIREMENTS
 
-Every template MUST begin with:
+Use ONLY prefixed functions:
 
-<!-- wp:template-part {"slug":"header","theme":"myaitheme","tagName":"header"} /-->
+myaitheme_
 
-And MUST end with:
-
-<!-- wp:template-part {"slug":"footer","theme":"myaitheme","tagName":"footer"} /-->
-
-==================================================
-REQUIRED TEMPLATES
-==================================================
-
-index.html
-Displays:
-- post list
-- featured image
-- clickable title
-- date
-- author
-- excerpt
-- pagination
-
-single.html
-Displays:
-- featured image
-- title
-- date
-- categories
-- author
-- post content
-- comments block
-- post navigation
-
-page.html
-Displays:
-- page title
-- featured image
-- page content
-
-archive.html
-Displays:
-- archive title
-- archive description
-- post loop
-- pagination
-
-home.html
-Blog homepage optimized for latest posts.
-
-front-page.html
-Modern homepage layout using patterns:
-- hero section
-- features
-- CTA
-- latest posts
-
-search.html
-Displays search results and search form.
-
-category.html / tag.html / author.html
-Custom archive layouts with titles and post grids.
-
-404.html
-Must include:
-- “Page not found” message
-- search block
-- button back to homepage
-
-==================================================
-TEMPLATE PARTS
-==================================================
-
-header.html
-
-Must include:
-- site logo
-- site title
-- site tagline
-- responsive navigation block
-- mobile-friendly layout
-
-Use semantic HTML and proper spacing.
-
-footer.html
-
-Must include:
-- site logo
-- navigation
-- copyright text:
-© [current year] [site title] – Powered by WordPress
-- social links block
-
-==================================================
-PATTERNS
-==================================================
-
-Create reusable block patterns:
-
-hero.php
-Large hero section with:
-- heading
-- paragraph
-- CTA button
-- image or cover block
-
-features.php
-3-column features section.
-
-call-to-action.php
-Centered CTA section with button.
-
-latest-posts.php
-Latest posts grid.
-
-Patterns must:
-- be registered properly
-- support translation
-- use clean block markup
-
-==================================================
-FUNCTIONS.PHP
-==================================================
-
-The file must:
-
-Theme Supports:
+Theme supports:
 - editor-styles
 - wp-block-styles
 - appearance-tools
@@ -255,37 +231,58 @@ Theme Supports:
 WooCommerce:
 add_theme_support('woocommerce');
 
-Ensure compatibility with WooCommerce blocks.
+Ensure WooCommerce Blocks compatibility.
+
+Register custom block styles:
+- list/checkmark
+- list/arrow
+- list/no-bullets
+- button/fill
+- button/outline
+- button/ghost
+- button/pill
 
 Enqueue:
-- style.css in frontend
-- assets/script.js in footer
-- assets/editor-style.css in block editor
+- style.css
+- assets/script.js
+- assets/editor-style.css
 
-Internationalization:
+Load translations:
 load_theme_textdomain('myaitheme');
 
-Security & Standards:
-- Prefix all functions with myaitheme_
-- Escape outputs properly
-- Follow WordPress Coding Standards
-- No PHP warnings/notices
+Requirements:
+- no PHP notices
+- no warnings
+- WordPress Coding Standards
+- escaped outputs
+- secure code
+- production-ready
 
-==================================================
-THEME.JSON
-==================================================
+---
+
+# THEME.JSON REQUIREMENTS
 
 Use:
-- version: 3
-- proper $schema
+- Version 3
+- valid $schema
 - WordPress 6.9+ standards
-- WordPress 6.9 form element styling support
 
-==================================================
-TYPOGRAPHY
-==================================================
+Enable:
+- fluid typography
+- appearance tools
+- root padding aware alignments
 
-Enable fluid typography:
+contentSize:
+620px
+
+wideSize:
+1140px
+
+---
+
+# TYPOGRAPHY SYSTEM
+
+Enable:
 "fluid": true
 
 Font Families:
@@ -295,89 +292,19 @@ Font Families:
 
 Font Sizes:
 - Small: 0.875rem
-- Medium: fluid min 1rem max 1.25rem
-- Large: fluid min 1.125rem max 1.5rem
-- XL: fluid min 1.75rem max 2rem
-- XXL: fluid min 2.15rem max 3rem
+- Medium: fluid min 1rem max 1.125rem
+- Large: fluid min 1.5rem max 1.75rem
+- XL: fluid min 2rem max 2.5rem
+- XXL: fluid min 3rem max 3.75rem
+- Display: fluid min 4rem max 5rem
 
-==================================================
-ELEMENTS
-==================================================
+Line Heights:
+- Body: 1.5
+- Headings: 1.125
 
-Text:
-- medium font size
-- line height 1.5
+---
 
-Headings:
-- line height 1.125
-
-Links:
-- underline
-- hover color
-
-Buttons:
-- background color
-- text color
-- hover styles
-
-==================================================
-WORDPRESS 6.9 FORM ELEMENTS
-==================================================
-
-Inside styles.elements, define global styles for:
-
-- form
-- label
-- input
-- textarea
-- select
-- button
-
-Form elements must include:
-- typography
-- color
-- background color
-- border color
-- border width
-- border radius
-- padding
-- spacing
-- focus styles
-- hover styles where supported
-
-Inputs / Textareas / Selects:
-- background: #ffffff
-- text color: #333333
-- border: 1px solid #d3d3d3
-- border radius: 0.5rem
-- padding: 0.75rem 1rem
-- font size: medium
-- line height: 1.5
-
-Labels:
-- font size: small
-- font weight: 600
-- color: #333333
-- margin bottom: 0.5rem
-
-Focus state:
-- visible outline
-- outline color: #666666
-- outline width: 2px
-- outline offset: 2px
-- border color: #666666
-
-Buttons:
-- background color: #333333
-- text color: #ffffff
-- border radius: 0.5rem
-- padding: 0.75rem 1.5rem
-- hover background: #888888
-- hover text color: #ffffff
-
-==================================================
-COLOR SYSTEM
-==================================================
+# COLOR SYSTEM
 
 Disable defaults:
 - defaultPalette: false
@@ -385,6 +312,13 @@ Disable defaults:
 - defaultDuotone: false
 
 Custom palette:
+- primary
+- secondary
+- foreground
+- background
+- contrast
+
+Suggested colors:
 - White: #ffffff
 - Black: #333333
 - Dark Gray: #666666
@@ -393,24 +327,11 @@ Custom palette:
 - Very Light Gray: #f4f4f4
 - Transparent
 
-==================================================
-LAYOUT
-==================================================
+---
 
-contentSize: 620px
-wideSize: 1140px
+# SPACING SYSTEM (STRICT 8PX GRID)
 
-Enable:
-"useRootPaddingAwareAlignments": true
-
-==================================================
-SPACING SYSTEM
-==================================================
-
-Create a consistent spacing scale based on an 8px grid system.
-
-All spacing values throughout the theme must follow this spacing scale:
-
+Use ONLY spacing values aligned to:
 - 4px → 0.25rem
 - 8px → 0.5rem
 - 16px → 1rem
@@ -421,172 +342,323 @@ All spacing values throughout the theme must follow this spacing scale:
 - 96px → 6rem
 - 128px → 8rem
 
-theme.json spacing presets:
+Maintain:
+- consistent vertical rhythm
+- spacing consistency
+- no arbitrary values
 
-"spacing": {
-  "units": ["px", "rem", "%", "vw"],
-  "blockGap": "24px",
-  "spacingSizes": [
-    {
-      "name": "XS",
-      "slug": "xs",
-      "size": "0.5rem"
-    },
-    {
-      "name": "SM",
-      "slug": "sm",
-      "size": "1rem"
-    },
-    {
-      "name": "MD",
-      "slug": "md",
-      "size": "1.5rem"
-    },
-    {
-      "name": "LG",
-      "slug": "lg",
-      "size": "2rem"
-    },
-    {
-      "name": "XL",
-      "slug": "xl",
-      "size": "3rem"
-    },
-    {
-      "name": "2XL",
-      "slug": "2xl",
-      "size": "4rem"
-    },
-    {
-      "name": "3XL",
-      "slug": "3xl",
-      "size": "6rem"
-    }
-  ]
-}
+---
 
-==================================================
-GRID & RHYTHM
-==================================================
-
-Use an 8px vertical rhythm and layout grid system:
-- all margins and paddings must align to the spacing scale
-- avoid arbitrary spacing values
-- maintain visual consistency across all templates and patterns
-
-==================================================
-RESPONSIVE SPACING
-==================================================
-
-Spacing should scale naturally on mobile and desktop while preserving the 8px rhythm.
-
-Prefer:
-- 16px / 24px spacing on mobile
-- 32px / 48px spacing on desktop sections
-
-Global block gap:
-"blockGap": "24px"
+# RESPONSIVE LAYOUT
 
 Container Padding:
+- Desktop: 2rem
+- Tablet: 1.5rem
+- Mobile: 1rem
 
-Desktop:
-- left/right: 2rem
+Requirements:
+- fully responsive
+- mobile-first
+- clean tablet layouts
+- optimized mobile navigation
+- fluid spacing
+- fluid typography
 
-Tablet:
-- left/right: 1.5rem
+---
 
-Mobile:
-- left/right: 1rem
+# WORDPRESS 6.9 FORM ELEMENTS
 
-Use fluid spacing whenever appropriate while preserving spacing scale consistency.
+Inside:
+styles.elements
 
-==================================================
-HOVER STYLES
-==================================================
+Define styles for:
+- form
+- label
+- input
+- textarea
+- select
+- button
 
-Links:
-- underline
-- hover color #666666
+Include:
+- typography
+- colors
+- border
+- border radius
+- padding
+- spacing
+- focus styles
+- hover styles
+
+Inputs / Textareas / Selects:
+- background: #ffffff
+- text color: #333333
+- border: 1px solid #d3d3d3
+- border radius: 0.5rem
+- padding: 0.75rem 1rem
+- line height: 1.5
+
+Labels:
+- font size: small
+- font weight: 600
+- color: #333333
+- margin bottom: 0.5rem
+
+Focus States:
+- visible outline
+- outline color: #666666
+- outline width: 2px
+- outline offset: 2px
+- border color: #666666
 
 Buttons:
-- hover background #888888
-- hover text #ffffff
+- background: #333333
+- text: #ffffff
+- border radius: 0.5rem
+- padding: 0.75rem 1.5rem
+- hover background: #888888
+- hover text: #ffffff
 
-==================================================
-RESPONSIVE DESIGN
-==================================================
+---
 
-Theme must:
-- be fully responsive
-- support mobile/tablet/desktop
-- include mobile navigation behavior
-- use fluid spacing and typography
-- keep layouts clean on small screens
+# TEMPLATE REQUIREMENTS
 
-==================================================
-ACCESSIBILITY
-==================================================
+Use ONLY valid core blocks such as:
+- core/group
+- core/query
+- core/post-template
+- core/post-title
+- core/post-featured-image
+- core/post-content
+- core/navigation
+- core/site-title
+- core/site-logo
+- core/site-tagline
+- core/search
+- core/buttons
+- core/button
+- core/query-pagination
+- core/comments
 
-Follow WCAG best practices:
-- visible keyboard focus
+---
+
+# REQUIRED TEMPLATE CONTENT
+
+## index.html
+
+Must display:
+- Query Loop
+- featured image
+- clickable title
+- author
+- date
+- excerpt
+- pagination
+
+## single.html
+
+Must display:
+- featured image
+- title
+- categories
+- date
+- author
+- post content
+- comments block
+- post navigation
+
+## page.html
+
+Must display:
+- title
+- featured image
+- page content
+
+## archive.html
+
+Must display:
+- archive title
+- archive description
+- Query Loop
+- pagination
+
+## home.html
+
+Optimized latest posts layout.
+
+## front-page.html
+
+Must use patterns:
+- hero
+- features
+- CTA
+- latest posts
+
+## search.html
+
+Must display:
+- search title
+- search form
+- results list
+
+## category.html / tag.html / author.html
+
+Custom archive layouts using responsive post grids.
+
+## 404.html
+
+Must include:
+- “Page Not Found”
+- search block
+- button back to homepage
+
+---
+
+# TEMPLATE PARTS
+
+## header.html
+
+Must include:
+- site logo
+- site title
+- site tagline
+- responsive navigation
+- semantic HTML5
+- mobile-friendly layout
+
+## footer.html
+
+Must include:
+- site logo
+- navigation
+- social links
+- copyright text:
+
+© [current year] [site title] – Powered by WordPress
+
+---
+
+# BLOCK PATTERNS
+
+Create reusable patterns:
+- hero-section.php
+- benefits-section.php
+- features-grid.php
+- testimonials.php
+- pricing-table.php
+- team-members.php
+- faq.php
+- newsletter.php
+- call-to-action.php
+- latest-posts.php
+
+Requirements:
+- translation-ready
+- clean block markup
+- valid block JSON
+- accessible
+- responsive
+
+---
+
+# DESIGN REQUIREMENTS
+
+Style:
+- modern SaaS aesthetic
+- minimalist
+- clean whitespace
+- subtle shadows
+- rounded corners
+- excellent readability
+
+Accessibility:
+- WCAG compliant
+- keyboard focus visible
+- proper heading hierarchy
 - sufficient color contrast
 - semantic landmarks
-- accessible navigation
-- proper heading hierarchy
-- accessible buttons and forms
 
-==================================================
-PERFORMANCE
-==================================================
+---
+
+# PERFORMANCE REQUIREMENTS
 
 Optimize for:
 - lightweight CSS
-- minimal JavaScript
+- minimal JS
 - fast loading
 - clean markup
 - no unnecessary dependencies
+- minimal DOM complexity
 
-==================================================
-COMPATIBILITY
-==================================================
+---
 
-Must support:
-- WordPress 6.9+
-- theme.json version 3
-- WordPress 6.9 form element styling via styles.elements
-- Gutenberg Site Editor
-- WooCommerce
+# WOOCOMMERCE REQUIREMENTS
+
+Ensure compatibility with:
+- Shop page
+- Product archive
+- Single product
+- Cart Block
+- Checkout Block
+- Product Grid Block
+- Mini Cart Block
+- WooCommerce forms
 - WooCommerce Blocks
-- latest PHP versions
 
-==================================================
-README.MD
-==================================================
+Do NOT heavily override WooCommerce core styles.
+
+---
+
+# README.MD REQUIREMENTS
 
 Include:
 - installation instructions
 - theme structure
-- customization instructions
-- WooCommerce support notes
+- customization guide
+- WooCommerce support
 - development notes
+- style variations usage
+- child theme recommendations
 
-==================================================
-EXPORT REQUIREMENTS
-==================================================
+---
 
-The final generated theme must:
-- be installable directly as a ZIP
-- contain no placeholder files
-- contain no missing templates
-- contain valid syntax
-- follow WordPress standards
-- be production-ready
-- work immediately after activation without errors
+# FINAL VALIDATION REQUIREMENTS
+
+Before delivering:
+
+1. Validate:
+- theme.json
+- style variations JSON
+- PHP syntax
+- block markup
+- template syntax
+
+2. Ensure:
+- no invalid blocks
+- no unsupported blocks
+- no malformed comments
+- no missing files
+- no placeholder content
+- no syntax errors
+
+3. Ensure every template:
+- starts with header template-part
+- ends with footer template-part
+
+4. Ensure:
+- installable ZIP
+- production-ready structure
+- immediate activation without errors
+
+5. Run final audit for:
+- Gutenberg Block Recovery risks
+- invalid CSS classes
+- invalid JSON
+- invalid block attributes
+- malformed nesting
+- accessibility issues
+- responsive issues
+
+Deliver complete code for ALL files with their relative paths.
 ```
-__________________________________
-
-This is a starter theme with woocommerce support 
-Edit it : add your own values and specify other properties you need
-Once the theme is generated, install it and test it to be sure everything is ok. It should be but sometimes, the content generated is not fully compatible with WordPress default Gutenberg tags.
 
 
