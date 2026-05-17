@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"very-light-gray","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-very-light-gray-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+<div class="wp-block-group alignfull has-very-light-gray-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--3xl);padding-bottom:var(--wp--preset--spacing--3xl)">
     <!-- wp:columns {"align":"wide"} -->
     <div class="wp-block-columns alignwide">
         <!-- wp:column {"width":"60%"} -->

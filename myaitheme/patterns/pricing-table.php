@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--3xl);padding-bottom:var(--wp--preset--spacing--3xl)">
     <!-- wp:heading {"textAlign":"center","fontSize":"x-large"} -->
     <h2 class="wp-block-heading has-text-align-center has-x-large-font-size">Simple, Transparent Pricing</h2>
     <!-- /wp:heading -->
@@ -22,7 +22,7 @@
         <!-- wp:column -->
         <div class="wp-block-column">
             <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"very-light-gray","layout":{"type":"constrained"}} -->
-            <div class="wp-block-group has-very-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            <div class="wp-block-group has-very-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--lg);padding-right:var(--wp--preset--spacing--md);padding-bottom:var(--wp--preset--spacing--lg);padding-left:var(--wp--preset--spacing--md)">
                 <!-- wp:heading {"level":3,"textAlign":"center"} -->
                 <h3 class="wp-block-heading has-text-align-center">Basic</h3>
                 <!-- /wp:heading -->
@@ -70,7 +70,7 @@
         <!-- wp:column -->
         <div class="wp-block-column">
             <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"black","textColor":"white","layout":{"type":"constrained"}} -->
-            <div class="wp-block-group has-white-color has-black-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            <div class="wp-block-group has-white-color has-black-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--lg);padding-right:var(--wp--preset--spacing--md);padding-bottom:var(--wp--preset--spacing--lg);padding-left:var(--wp--preset--spacing--md)">
                 <!-- wp:heading {"level":3,"textAlign":"center","textColor":"white"} -->
                 <h3 class="wp-block-heading has-text-align-center has-white-color has-text-color">Professional</h3>
                 <!-- /wp:heading -->
@@ -122,7 +122,7 @@
         <!-- wp:column -->
         <div class="wp-block-column">
             <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"very-light-gray","layout":{"type":"constrained"}} -->
-            <div class="wp-block-group has-very-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            <div class="wp-block-group has-very-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--lg);padding-right:var(--wp--preset--spacing--md);padding-bottom:var(--wp--preset--spacing--lg);padding-left:var(--wp--preset--spacing--md)">
                 <!-- wp:heading {"level":3,"textAlign":"center"} -->
                 <h3 class="wp-block-heading has-text-align-center">Enterprise</h3>
                 <!-- /wp:heading -->

@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--3xl);padding-bottom:var(--wp--preset--spacing--3xl)">
     <!-- wp:heading {"textAlign":"center","fontSize":"x-large"} -->
     <h2 class="wp-block-heading has-text-align-center has-x-large-font-size">Why Choose Us</h2>
     <!-- /wp:heading -->
