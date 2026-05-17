@@ -25,8 +25,8 @@
         
         <!-- wp:column {"width":"50%"} -->
         <div class="wp-block-column" style="flex-basis:50%">
-            <!-- wp:list {"className":"is-style-numbered"} -->
-            <ul class="is-style-numbered">
+            <!-- wp:list {"ordered":true} -->
+            <ol>
                 <!-- wp:list-item -->
                 <li><strong>Initial Consultation</strong><br>We discuss your requirements and goals to understand your needs.</li>
                 <!-- /wp:list-item -->
@@ -42,7 +42,7 @@
                 <!-- wp:list-item -->
                 <li><strong>Testing & Delivery</strong><br>Thorough testing ensures quality before final delivery.</li>
                 <!-- /wp:list-item -->
-            </ul>
+            </ol>
             <!-- /wp:list -->
         </div>
         <!-- /wp:column -->
