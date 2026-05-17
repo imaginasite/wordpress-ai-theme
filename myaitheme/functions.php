@@ -100,6 +100,24 @@ function myaitheme_register_block_styles()
 }
 add_action('init', 'myaitheme_register_block_styles');
 
+/**
+ * Configure PHPMailer to use custom SMTP server details for transactional email delivery.
+ *
+ * @param object $phpmailer The PHPMailer instance to configure.
+ * @return void
+ */
+function myaitheme_set_phpmailer_details($phpmailer)
+{
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'sub.domain.org';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = '465'; //25 or 465
+    $phpmailer->Username = 'name@domain.org';
+    $phpmailer->Password = 'PASSWORD';
+    $phpmailer->SMTPSecure = 'ssl'; //ssl or tls
+}
+add_action('phpmailer_init', 'myaitheme_set_phpmailer_details');
+
 //set a default image thumb for posts
 function myaitheme_set_default_thumbnail($post)
 {
@@ -115,3 +133,217 @@ function myaitheme_set_default_thumbnail($post)
     }
 }
 add_action('rest_after_insert_post', 'myaitheme_set_default_thumbnail', 10, 3);
+
+/**
+ * Disable the detection and loading of WordPress Emoji scripts and styles.
+ * This reduces unnecessary HTTP requests and optimizes page load times.
+ *
+ * @return void
+ */
+function myaitheme_disable_emojis()
+{
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    add_filter('wp_resource_hints', 'myaitheme_disable_emojis_remove_dns_prefetch', 10, 2);
+}
+add_action('init', 'myaitheme_disable_emojis');
+
+/**
+ * Remove DNS prefetching for WordPress Emoji servers.
+ *
+ * @param array  $urls          List of URLs to prefetch.
+ * @param string $relation_type Relation type of the resource (e.g., dns-prefetch).
+ * @return array Filtered list of URLs.
+ */
+function myaitheme_disable_emojis_remove_dns_prefetch($urls, $relation_type)
+{
+    if ('dns-prefetch' == $relation_type) {
+        $emoji_svg_url = apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/');
+        $urls = array_diff($urls, array($emoji_svg_url));
+    }
+    return $urls;
+}
+
+/**
+ * Load Gutenberg block styles only when the block is used on the page.
+ * This dramatically improves CSS performance and pagespeed scores.
+ */
+add_filter('should_load_separate_core_block_assets', '__return_true');
+
+/**
+ * Clean up redundant or obsolete links injected in the HTML head.
+ *
+ * @return void
+ */
+function myaitheme_cleanup_head()
+{
+    // Windows Live Writer link (obsolete since 2012)
+    remove_action('wp_head', 'wlwmanifest_link');
+    // RSD link used by obsolete external XML-RPC clients (rsd_link is also removed safely here)
+    remove_action('wp_head', 'rsd_link');
+    // Shortlink for the current page (useless and bad for clean SEO)
+    remove_action('wp_head', 'wp_shortlink_wp_head', 10);
+    // REST API link tag in HTML head
+    remove_action('wp_head', 'rest_output_link_wp_head', 10);
+    // OEMBED links in HTML head
+    remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
+}
+add_action('init', 'myaitheme_cleanup_head');
+
+/**
+ * Disable Gutenberg duotone SVG filters from loading on the frontend.
+ *
+ * @return void
+ */
+function myaitheme_remove_duotone_svg()
+{
+    remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
+}
+add_action('wp_body_open', 'myaitheme_remove_duotone_svg', 1);
+
+/**
+ * Customize the login failure error message for security hardening.
+ *
+ * @return string Generic login error message.
+ */
+add_filter('login_errors', function () {
+    return 'Erreur de connexion.';
+});
+
+/**
+ * Disable the XML-RPC protocol to protect the site from brute-force attacks.
+ */
+add_filter('xmlrpc_enabled', '__return_false');
+remove_action('wp_head', 'rsd_link');
+
+/**
+ * Remove X-Pingback headers from HTTP responses to prevent pingback spam.
+ *
+ * @param array $headers List of HTTP headers sent by WordPress.
+ * @return array Cleaned HTTP headers list.
+ */
+function myaitheme_remove_x_pingback($headers)
+{
+    unset($headers['X-Pingback']);
+    return $headers;
+}
+add_filter('wp_headers', 'myaitheme_remove_x_pingback');
+
+/**
+ * Disable default pingbacks and trackbacks configurations for new posts.
+ *
+ * @return void
+ */
+function myaitheme_disable_pingback_and_trackback()
+{
+    update_option('default_ping_status', 'closed');
+    update_option('default_pingback_flag', 0);
+}
+add_action('after_setup_theme', 'myaitheme_disable_pingback_and_trackback');
+
+/**
+ * Prevent the site from sending self-pingbacks (when a post links to another post on the same site).
+ *
+ * @param array $links List of target pingback URLs.
+ * @return void
+ */
+add_action('pre_ping', function (&$links) {
+    $home = get_option('home');
+    foreach ($links as $l => $link) {
+        if (strpos($link, $home) === 0) {
+            unset($links[$l]);
+        }
+    }
+});
+
+/**
+ * Remove the WordPress version from the generator meta tag in the HTML head.
+ */
+remove_action('wp_head', 'wp_generator');
+
+/**
+ * Remove the WordPress version generated in RSS feeds and other generators.
+ *
+ * @return string Empty string to hide the version.
+ */
+function myaitheme_remove_wordpress_version()
+{
+    return '';
+}
+add_filter('the_generator', 'myaitheme_remove_wordpress_version');
+
+
+
+/**
+ * Restrict Rest API access to the users endpoint for non-logged-in users.
+ * This prevents public user enumeration and hardens site security.
+ *
+ * @param mixed $result Rest authentication error or null.
+ * @return mixed WP_Error if access is restricted, or the original authentication status.
+ */
+function myaitheme_restrict_rest_users_api($result)
+{
+    if (!empty($result)) {
+        return $result;
+    }
+
+    $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+
+    if (!is_user_logged_in() && strpos($request_uri, '/wp/v2/users') !== false) {
+        return new WP_Error(
+            'rest_forbidden_users',
+            'Accès refusé.',
+            ['status' => 401]
+        );
+    }
+
+    return $result;
+}
+add_filter('rest_authentication_errors', 'myaitheme_restrict_rest_users_api');
+
+/**
+ * Disable WordPress application passwords to secure the site from credential misuse.
+ */
+add_filter('wp_is_application_passwords_available', '__return_false');
+
+/**
+ * Load Contact Form 7 styles and scripts conditionally.
+ * This improves frontend performance by enqueuing assets only on singular pages 
+ * that actually contain the CF7 shortcode or the custom block.
+ *
+ * @return void
+ */
+function myaitheme_load_cf7_assets_conditionally()
+{
+    if (is_singular()) {
+        global $post;
+
+        if (
+            isset($post->post_content) &&
+            (
+                has_shortcode($post->post_content, 'contact-form-7') ||
+                has_block('contact-form-7/contact-form-selector', $post)
+            )
+        ) {
+            if (function_exists('wpcf7_enqueue_styles')) {
+                wpcf7_enqueue_styles();
+            }
+
+            if (function_exists('wpcf7_enqueue_scripts')) {
+                wpcf7_enqueue_scripts();
+            }
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'myaitheme_load_cf7_assets_conditionally');
+
+/**
+ * Hide Rank Math SEO comments and credit notices from the page HTML source.
+ */
+add_filter('rank_math/frontend/show_comment', '__return_false');
+add_filter('rank_math/frontend/remove_credit_notice', '__return_true');
