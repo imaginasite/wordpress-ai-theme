@@ -1,0 +1,8 @@
+<?php
+/**
+ * Title: Features
+ * Slug: myaitheme/features
+ * Categories: columns, featured
+ */
+?>
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"3rem","bottom":"3rem"}}},"layout":{"type":"constrained"}} --><div class="wp-block-group alignwide" style="padding-top:3rem;padding-bottom:3rem"><!-- wp:heading {"textAlign":"center"} --><h2 class="wp-block-heading has-text-align-center"><?php echo esc_html__( 'Everything you need', 'myaitheme' ); ?></h2><!-- /wp:heading --><!-- wp:columns --><div class="wp-block-columns"><!-- wp:column --><div class="wp-block-column"><!-- wp:heading {"level":3} --><h3 class="wp-block-heading"><?php echo esc_html__( 'Fast', 'myaitheme' ); ?></h3><!-- /wp:heading --><!-- wp:paragraph --><p><?php echo esc_html__( 'Lightweight assets and clean block markup keep pages quick.', 'myaitheme' ); ?></p><!-- /wp:paragraph --></div><!-- /wp:column --><!-- wp:column --><div class="wp-block-column"><!-- wp:heading {"level":3} --><h3 class="wp-block-heading"><?php echo esc_html__( 'Flexible', 'myaitheme' ); ?></h3><!-- /wp:heading --><!-- wp:paragraph --><p><?php echo esc_html__( 'Customize layouts, colors, and typography directly in the Site Editor.', 'myaitheme' ); ?></p><!-- /wp:paragraph --></div><!-- /wp:column --><!-- wp:column --><div class="wp-block-column"><!-- wp:heading {"level":3} --><h3 class="wp-block-heading"><?php echo esc_html__( 'Commerce ready', 'myaitheme' ); ?></h3><!-- /wp:heading --><!-- wp:paragraph --><p><?php echo esc_html__( 'Built with WooCommerce and WooCommerce Blocks compatibility in mind.', 'myaitheme' ); ?></p><!-- /wp:paragraph --></div><!-- /wp:column --></div><!-- /wp:columns --></div><!-- /wp:group -->

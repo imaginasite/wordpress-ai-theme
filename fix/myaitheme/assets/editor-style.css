@@ -1,0 +1,4 @@
+.editor-styles-wrapper { font-family: var(--wp--preset--font-family--system); color: var(--wp--preset--color--black); line-height: 1.5; }
+.editor-styles-wrapper a { text-decoration: underline; text-underline-offset: 0.18em; }
+.editor-styles-wrapper input, .editor-styles-wrapper textarea, .editor-styles-wrapper select { border: 1px solid #d3d3d3; border-radius: 0.5rem; padding: 0.75rem 1rem; }
+.editor-styles-wrapper .wp-block-post-featured-image img { border-radius: 1rem; }

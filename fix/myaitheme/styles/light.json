@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Light",
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#333333"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "#333333"
+        },
+        ":hover": {
+          "color": {
+            "text": "#666666"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "#333333",
+          "text": "#ffffff"
+        }
+      }
+    }
+  }
+}

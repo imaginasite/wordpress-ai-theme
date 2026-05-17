@@ -1,0 +1,48 @@
+/*
+Theme Name: My Ai Theme
+Theme URI: https://example.com/my-ai-theme/
+Author: My Ai Theme Contributors
+Author URI: https://example.com/
+Description: A modern, clean, responsive WordPress block theme built for Full Site Editing, Gutenberg, and WooCommerce.
+Version: 1.0.0
+Requires at least: 6.9
+Tested up to: 6.9
+Requires PHP: 7.4
+Text Domain: myaitheme
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: full-site-editing, block-patterns, block-styles, wide-blocks, accessibility-ready, custom-colors, custom-logo, custom-menu, editor-style, featured-images, threaded-comments, translation-ready, e-commerce
+*/
+
+:root {
+	--myaitheme-focus: #666666;
+	--myaitheme-radius: 0.5rem;
+}
+
+html { box-sizing: border-box; scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--wp--preset--color--white, #ffffff); color: var(--wp--preset--color--black, #333333); font-family: var(--wp--preset--font-family--system); font-size: var(--wp--preset--font-size--medium); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.125; text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; transition: color 160ms ease; }
+a:hover { color: var(--wp--preset--color--dark-gray, #666666); }
+img, svg, video { max-width: 100%; height: auto; }
+button, input, textarea, select { font: inherit; }
+button, .wp-block-button__link, input[type="button"], input[type="submit"], input[type="reset"] { border-radius: var(--myaitheme-radius); cursor: pointer; transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+button:hover, .wp-block-button__link:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover { background: var(--wp--preset--color--gray, #888888); color: var(--wp--preset--color--white, #ffffff); }
+input, textarea, select, .wp-block-search__input, .comment-form input:not([type="submit"]), .comment-form textarea, .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea, .woocommerce form .form-row select { width: 100%; background: #ffffff; color: #333333; border: 1px solid #d3d3d3; border-radius: var(--myaitheme-radius); padding: 0.75rem 1rem; line-height: 1.5; }
+input:focus, textarea:focus, select:focus, button:focus-visible, a:focus-visible, .wp-block-navigation a:focus-visible, .wp-block-button__link:focus-visible, .wp-block-search__button:focus-visible, .woocommerce a.button:focus-visible, .woocommerce button.button:focus-visible, .woocommerce input.button:focus-visible { outline: 2px solid var(--myaitheme-focus); outline-offset: 2px; border-color: var(--myaitheme-focus); }
+.wp-site-blocks { min-height: 100vh; display: flex; flex-direction: column; }
+.wp-site-blocks > main { flex: 1; }
+.wp-block-post-featured-image img { border-radius: 1rem; }
+.wp-block-post-title a { text-decoration: none; }
+.wp-block-post-title a:hover { color: var(--wp--preset--color--dark-gray, #666666); }
+.wp-block-query-pagination { gap: 1rem; }
+.wp-block-navigation__responsive-container.is-menu-open { padding: 1.5rem; }
+.wp-block-search__button { border: 0; border-radius: var(--myaitheme-radius); padding: 0.75rem 1.5rem; }
+.comment-form label, .woocommerce form .form-row label { display: block; margin-bottom: 0.5rem; font-size: var(--wp--preset--font-size--small); font-weight: 600; color: #333333; }
+.woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit { background: #333333; color: #ffffff; border-radius: var(--myaitheme-radius); padding: 0.75rem 1.5rem; }
+.woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, .woocommerce #respond input#submit:hover { background: #888888; color: #ffffff; }
+.screen-reader-text { border: 0; clip: rect(1px,1px,1px,1px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; word-wrap: normal !important; }
+.screen-reader-text:focus { clip: auto !important; clip-path: none; display: block; height: auto; left: 1rem; top: 1rem; width: auto; z-index: 100000; }
+@media (max-width: 781px) { body { --wp--style--root--padding-left: 1rem; --wp--style--root--padding-right: 1rem; } .wp-block-columns:not(.is-not-stacked-on-mobile) { gap: 1.5rem; } }
