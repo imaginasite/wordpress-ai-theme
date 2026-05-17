@@ -3,14 +3,26 @@
 <!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
 <main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--lg);padding-bottom:var(--wp--preset--spacing--lg)">
     <!-- wp:heading {"level":1} -->
-    <h1>Page not found</h1>
+    <h1>Page Not Found</h1>
     <!-- /wp:heading -->
     
     <!-- wp:paragraph -->
-    <p>Sorry, we couldn't find the page you're looking for.</p>
+    <p>Sorry, we couldn't find the page you're looking for. Try searching below or return to the homepage.</p>
     <!-- /wp:paragraph -->
     
     <!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search...","width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+    
+    <!-- wp:spacer {"height":"20px"} -->
+    <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+    <!-- /wp:spacer -->
+    
+    <!-- wp:buttons -->
+    <div class="wp-block-buttons">
+        <!-- wp:button {"backgroundColor":"primary","textColor":"white","style":{"border":{"radius":"8px"}}} -->
+        <div class="wp-block-button"><a class="wp-block-button__link has-primary-background-color has-white-color has-background has-text-color wp-element-button" href="/" style="border-radius:8px">Back to Homepage</a></div>
+        <!-- /wp:button -->
+    </div>
+    <!-- /wp:buttons -->
 </main>
 <!-- /wp:group -->
 
