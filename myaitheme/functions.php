@@ -13,7 +13,14 @@ function myaitheme_setup()
     add_theme_support('wp-block-styles');
     add_theme_support('editor-styles');
     add_theme_support('appearance-tools');
-    add_theme_support('woocommerce');
+    
+    // Add WooCommerce and gallery support only if WooCommerce is active
+    if (class_exists('WooCommerce')) {
+        add_theme_support('woocommerce');
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
+    }
 
     // Enqueue editor styles
     add_editor_style('assets/editor-style.css');
@@ -320,6 +327,11 @@ add_filter('wp_is_application_passwords_available', '__return_false');
  */
 function myaitheme_load_cf7_assets_conditionally()
 {
+    // Exit early if Contact Form 7 is not installed or active
+    if (!function_exists('wpcf7_enqueue_styles')) {
+        return;
+    }
+
     if (is_singular()) {
         global $post;
 
@@ -330,13 +342,8 @@ function myaitheme_load_cf7_assets_conditionally()
                 has_block('contact-form-7/contact-form-selector', $post)
             )
         ) {
-            if (function_exists('wpcf7_enqueue_styles')) {
-                wpcf7_enqueue_styles();
-            }
-
-            if (function_exists('wpcf7_enqueue_scripts')) {
-                wpcf7_enqueue_scripts();
-            }
+            wpcf7_enqueue_styles();
+            wpcf7_enqueue_scripts();
         }
     }
 }
@@ -347,3 +354,53 @@ add_action('wp_enqueue_scripts', 'myaitheme_load_cf7_assets_conditionally');
  */
 add_filter('rank_math/frontend/show_comment', '__return_false');
 add_filter('rank_math/frontend/remove_credit_notice', '__return_true');
+
+/**
+ * Enable the Gutenberg block editor for WooCommerce products.
+ *
+ * @param bool   $can_edit  Whether the post type can be edited with the block editor.
+ * @param string $post_type The post type slug.
+ * @return bool True if the post type is 'product', otherwise the original status.
+ */
+function myaitheme_enable_gutenberg_for_products($can_edit, $post_type)
+{
+    if (class_exists('WooCommerce') && $post_type === 'product') {
+        return true;
+    }
+    return $can_edit;
+}
+add_filter('use_block_editor_for_post_type', 'myaitheme_enable_gutenberg_for_products', 10, 2);
+
+/**
+ * Dequeue WooCommerce styles and scripts on non-WooCommerce pages to improve page speed.
+ *
+ * @return void
+ */
+function myaitheme_conditionally_dequeue_woocommerce_assets()
+{
+    // Do nothing if WooCommerce is not active
+    if (!class_exists('WooCommerce')) {
+        return;
+    }
+
+    // Check if we are on a WooCommerce-related page (Shop, Product, Cart, Checkout, My Account)
+    $is_wc_page = is_woocommerce() || is_cart() || is_checkout() || is_account_page();
+
+    // If it is not a WooCommerce page, dequeue all styles and scripts
+    if (!$is_wc_page) {
+        // Dequeue frontend styles
+        wp_dequeue_style('woocommerce-layout');
+        wp_dequeue_style('woocommerce-general');
+        wp_dequeue_style('woocommerce-smallscreen');
+        wp_dequeue_style('woocommerce_frontend_styles');
+        wp_dequeue_style('woocommerce-inline');
+
+        // Dequeue frontend scripts
+        wp_dequeue_script('woocommerce');
+        wp_dequeue_script('wc-add-to-cart');
+        wp_dequeue_script('wc-cart-fragments');
+        wp_dequeue_script('js-cookie');
+        wp_dequeue_script('jquery-blockui');
+    }
+}
+add_action('wp_enqueue_scripts', 'myaitheme_conditionally_dequeue_woocommerce_assets', 99);
